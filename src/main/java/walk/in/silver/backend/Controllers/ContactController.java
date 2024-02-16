@@ -13,14 +13,18 @@ public class ContactController {
     public ContactController(ContactServiceImpl contactService){
         this.contactService = contactService;
     }
-    @CrossOrigin(origins = "http://localhost:4200",
-                methods = {RequestMethod.GET, RequestMethod.POST},
-                maxAge = 3600
-                )
-    @GetMapping(path = "/addContact")
-    public AddContactResponse saveFromJSON(@ModelAttribute Contact contact) throws Exception{
+    @CrossOrigin(origins = "http://localhost:4200/",
+    methods = {RequestMethod.POST})
+    @PostMapping(path = "/addContact")
+    public AddContactResponse saveFromJSON(@RequestBody Contact contact) throws Exception{
         if(contact != null) {
-            return contactService.save(contact);
+            System.out.println(contact);
+            System.out.println(contact.getId());
+            System.out.println(contact.getEMail());
+            System.out.println(contact.getTitle());
+            System.out.println(contact.getMessage());
+            AddContactResponse save = contactService.save(contact);
+            return save;
 
         }
         else {

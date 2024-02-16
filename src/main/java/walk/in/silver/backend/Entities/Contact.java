@@ -11,18 +11,18 @@ public class Contact {
     @Setter@Getter
     @Column(name = "contacts_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    public int id;
     @Getter@Setter
     @Column(name = "contacts_add")
-    String eMail;
+    public String eMail;
     @Getter@Setter
     @Column(name = "contacts_title")
-    String title;
+    public String title;
     @Getter@Setter
     @Column(name = "contacts_message")
-    String message;
+    public String message;
 
-    public Contact(int id, String address,String title, String message){
+    public Contact(int id, String address, String title, String message){
         this.id = id;
         this.eMail = address;
         this.title = title;
