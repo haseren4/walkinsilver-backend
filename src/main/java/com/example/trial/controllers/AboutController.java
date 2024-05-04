@@ -7,11 +7,13 @@ import com.example.trial.domain.Quote;
 import com.example.trial.repositories.QuoteRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-
+import java.util.Random;
+@CrossOrigin(value = "*")
 @RestController
 public class AboutController {
     private QuoteService quoteService;
@@ -36,5 +38,12 @@ public class AboutController {
     public List<Contact> getContacts(){return contactService.listAll(null);}
     public String toString(){
         return "about";
+    }
+    @GetMapping("api/quote")
+    public Quote getQuote(){
+    List<Quote> list = quoteService.listAll(null);
+    Random rand = new Random();
+    int i = rand.nextInt(list.size());
+    return list.get(i);
     }
 }
