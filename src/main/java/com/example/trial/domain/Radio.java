@@ -1,8 +1,11 @@
 package com.example.trial.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+
+import java.util.List;
 
 @Entity
 @Table(name = "radio")
@@ -44,6 +47,10 @@ public class Radio {
     @Size(max = 100)
     @Column(name = "imgURL", length = 100)
     private String imgURL;
+
+    @Transient
+    @OneToMany(mappedBy = "radio")
+    private List<Contact> contacts;
 
     public Integer getId() {
         return id;
@@ -117,4 +124,11 @@ public class Radio {
         this.imgURL = imgURL;
     }
 
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
+    }
 }
