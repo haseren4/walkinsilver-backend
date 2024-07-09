@@ -28,4 +28,6 @@ public class RadioController {
     public List<Radio> getMobileRadios(){
         return radioService.findBySetup("Mobile");
     }
+    @GetMapping("api/radio/Base")
+    public List<Radio> getBaseRadios(){return radioService.findBySetup("Base");}
 }

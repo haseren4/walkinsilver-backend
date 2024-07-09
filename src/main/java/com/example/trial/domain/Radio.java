@@ -48,8 +48,8 @@ public class Radio {
     @Column(name = "imgURL", length = 100)
     private String imgURL;
 
-    @Transient
-    @OneToMany(mappedBy = "radio")
+    @JsonIgnore
+    @OneToMany(mappedBy = "radio", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Contact> contacts;
 
     public Integer getId() {
