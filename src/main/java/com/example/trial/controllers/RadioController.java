@@ -1,15 +1,13 @@
 package com.example.trial.controllers;
 
-import com.example.trial.Service.RadioAwardService;
-import com.example.trial.Service.RadioAwardServiceImpl;
+import com.example.trial.Service.*;
 import com.example.trial.domain.RadioAward;
+import com.example.trial.domain.RadioPic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.example.trial.domain.Radio;
-import com.example.trial.Service.RadioService;
-import com.example.trial.Service.RadioServiceImpl;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,10 +17,12 @@ import java.util.List;
 public class RadioController {
     private RadioService radioService;
     private RadioAwardService radioAwardService;
+    private RadioPicService radioPicService;
     @Autowired
-    public RadioController(RadioServiceImpl radioService, RadioAwardServiceImpl radioAwardService){
+    public RadioController(RadioPicServiceImpl radioPicService, RadioServiceImpl radioService, RadioAwardServiceImpl radioAwardService){
         this.radioService = radioService;
         this.radioAwardService = radioAwardService;
+        this.radioPicService = radioPicService;
     }
 
     @GetMapping("api/radio/HT")
@@ -36,6 +36,9 @@ public class RadioController {
     @GetMapping("api/radio/Base")
     public List<Radio> getBaseRadios(){return radioService.findBySetup("Base");}
 
-    @GetMapping("/radio/award/all")
+    @GetMapping("api/radio/award/all")
     public List<RadioAward> getAwards(){return radioAwardService.getAllAwards();}
+
+    @GetMapping("api/radio/pic/all")
+    public List<RadioPic> getRadioPics(){return radioPicService.getAllPics();}
 }
