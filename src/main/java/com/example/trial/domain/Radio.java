@@ -48,9 +48,6 @@ public class Radio {
     @Column(name = "imgURL", length = 100)
     private String imgURL;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "radio", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Contact> contacts;
 
     public Integer getId() {
         return id;
@@ -122,13 +119,5 @@ public class Radio {
 
     public void setImgURL(String imgURL) {
         this.imgURL = imgURL;
-    }
-
-    public List<Contact> getContacts() {
-        return contacts;
-    }
-
-    public void setContacts(List<Contact> contacts) {
-        this.contacts = contacts;
     }
 }
