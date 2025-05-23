@@ -7,6 +7,7 @@ import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.w3c.dom.stylesheets.LinkStyle;
 
@@ -25,11 +26,11 @@ public class PolicyController {
         return policyService.findAll();
     }
     @GetMapping("api/policy/id={i}")
-    public Policy findById(@PathParam("i")int id){
+    public Policy findById(@PathVariable("i")int id){
         return policyService.findById(id);
     }
     @GetMapping("api/policy/type={type}")
-    public List<Policy> findByType(@PathParam("type")String type){
+    public List<Policy> findByType(@PathVariable("type")String type){
         return policyService.findByType(type);
     }
 }
