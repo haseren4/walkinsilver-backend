@@ -9,6 +9,30 @@ public class Quote {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setQuote(String quote) {
+        this.quote = quote;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getQuote() {
+        return quote;
+    }
+
     @Column(name = "author")
     String author;
 
