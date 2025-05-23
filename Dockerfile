@@ -82,7 +82,7 @@ RUN adduser \
 USER appuser
 
 # Copy the executable from the "package" stage.
-COPY target/Trial-0.0.1-SNAPSHOT.jar ./
+COPY target/Spring-2.7.0-FINAL.jar ./
 EXPOSE 8080
 
-ENTRYPOINT [ "java", "-jar", "Trial-0.0.1-SNAPSHOT.jar" ]
+ENTRYPOINT [ "java", "-jar", "Spring-2.7.0-FINAL.jar" ]
