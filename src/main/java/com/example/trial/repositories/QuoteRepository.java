@@ -11,6 +11,6 @@ import java.util.List;
 public interface QuoteRepository extends CrudRepository<Quote, Integer> {
     @Query("SELECT q FROM Quote q")
     List<Quote> getAll();
-    @Query("SELECT Q FROM Quote q WHERE q.id = :id")
+    @Query("SELECT q FROM Quote q WHERE q.id = :id")
     Quote getQuoteById(int id);
 }
